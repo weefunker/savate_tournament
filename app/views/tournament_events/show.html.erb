@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Total contestants:</strong>
+  <%= @tournament_event.total_contestants %>
+</p>
+
+<p>
+  <strong>Tournament date:</strong>
+  <%= @tournament_event.tournament_date %>
+</p>
+
+<%= link_to 'Edit', edit_tournament_event_path(@tournament_event) %> |
+<%= link_to 'Back', tournament_events_path %>

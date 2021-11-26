@@ -10,10 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_16_222348) do
+ActiveRecord::Schema.define(version: 2021_11_26_030656) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "fighters", force: :cascade do |t|
+    t.string "fighter_name"
+    t.integer "fighter_age"
+    t.string "fighter_height"
+    t.integer "fighter_weight"
+    t.string "fighter_gender"
+    t.string "fighter_experience"
+    t.integer "fighter_skill"
+    t.integer "fighter_score"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "friendly_id_slugs", force: :cascade do |t|
     t.string "slug", null: false
@@ -24,6 +37,13 @@ ActiveRecord::Schema.define(version: 2021_11_16_222348) do
     t.index ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true
     t.index ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
     t.index ["sluggable_type", "sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_type_and_sluggable_id"
+  end
+
+  create_table "tournament_events", force: :cascade do |t|
+    t.integer "total_contestants"
+    t.datetime "tournament_date"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "users", force: :cascade do |t|

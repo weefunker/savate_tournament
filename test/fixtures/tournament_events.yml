@@ -1,0 +1,9 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  total_contestants: 1
+  tournament_date: 2021-11-26 02:57:54
+
+two:
+  total_contestants: 1
+  tournament_date: 2021-11-26 02:57:54

@@ -1,0 +1,21 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  fighter_name: MyString
+  fighter_age: 1
+  fighter_height: 1
+  fighter_weight: 1
+  fighter_gender: MyString
+  fighter_experience: MyString
+  fighter_skill: 1
+  fighter_score: 1
+
+two:
+  fighter_name: MyString
+  fighter_age: 1
+  fighter_height: 1
+  fighter_weight: 1
+  fighter_gender: MyString
+  fighter_experience: MyString
+  fighter_skill: 1
+  fighter_score: 1
