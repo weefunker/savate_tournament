@@ -28,11 +28,11 @@ after_create calls a generates_brackets method
 total_contestants
 tournament_date
 
-# Brackets
 
 
-#### bracket > has_many fighters
-Bracket average fighter score should be evened out as a last metric in deciding fights 
+### bracket belongs_to tournament 
+Sorting logic starts here after tournament inital logic
+
 
 
 # Userflow 
@@ -59,6 +59,95 @@ Fighter
 #### tournament logic 
 An overall score will be the primary metric for deciding who goes into each bracket 
 Next height and weight descrepancies will be accounted for within the bracket if a fighter is 
+
+
+
+
+#### Todo 
+
+Create models and scaffolds 
+Fix up relations 
+after_create on tournament create bracket with average fighter score 
+
+0.
+
+2.0.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
