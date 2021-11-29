@@ -5,3 +5,6 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+
+Fighter.create!(fighter_name: "Alex Overend", fighter_age: 32, fighter_height: "67", fighter_weight: 85, fighter_gender: "Male", fighter_experience: "None", fighter_skill: "Intermediate")

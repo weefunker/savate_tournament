@@ -7,7 +7,7 @@ class CreateFighters < ActiveRecord::Migration[6.1]
       t.integer :fighter_weight
       t.string :fighter_gender
       t.string :fighter_experience
-      t.integer :fighter_skill
+      t.string :fighter_skill
       t.integer :fighter_score
 
       t.timestamps

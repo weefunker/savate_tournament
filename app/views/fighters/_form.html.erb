@@ -42,24 +42,26 @@
   </div>
 
   <div class="field">
-    <%= form.label :fighter_weight %>
+    Fighter Weight in KG
     <%= form.number_field :fighter_weight %>
   </div>
 
   <div class="field">
     <%= form.label :fighter_gender %>
-    <%= form.text_field :fighter_gender %>
+    <%= form.select :fighter_gender, options_for_select(['Male', 'Female'])  %>
   </div>
 
   <div class="field">
     <%= form.label :fighter_experience %>
-    <%= form.text_field :fighter_experience %>
+    <%= form.select :fighter_experience, options_for_select(['None', 'A few fights', 'Lots of Fights'])  %>
   </div>
 
   <div class="field">
     <%= form.label :fighter_skill %>
-    <%= form.number_field :fighter_skill %>
+     <%= form.select :fighter_experience, options_for_select(['Novice', 'Intermediate', 'Advanced'])  %>
   </div>
+
+
 
   <div class="field">
     <%= form.label :fighter_score %>
