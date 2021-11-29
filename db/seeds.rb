@@ -7,4 +7,19 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-Fighter.create!(fighter_name: "Alex Overend", fighter_age: 32, fighter_height: "67", fighter_weight: 85, fighter_gender: "Male", fighter_experience: "None", fighter_skill: "Intermediate")
+arr_skills = ['Novice', 'Intermediate', 'Advanced']
+arr_exp = ['None', 'A few fights', 'Lots of Fights']
+arr_gender = ['Male', 'Female']
+
+
+16.times do 
+Fighter.create!(fighter_name: Faker::Name.name, fighter_age: rand(16..50), fighter_height:  rand(36..86), fighter_weight:  rand(53..117), fighter_gender: arr_gender.sample, fighter_experience: arr_exp.sample, fighter_skill: arr_skills.sample)
+end
+
+
+# Smallest Height 36 
+# Largest Height 96
+
+# Fighter Skill - 'Novice', 'Intermediate', 'Advanced'
+
+ # Fighter Experience -  'None', 'A few fights', 'Lots of Fights'

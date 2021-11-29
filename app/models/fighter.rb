@@ -3,7 +3,8 @@ class Fighter < ApplicationRecord
     has_many :tournament_events
     has_many :fights, through: :tournament_events
 
-    after_create :generate_fighter_score
+    after_commit :generate_fighter_score
+
 
 
     def generate_fighter_score 
@@ -45,7 +46,8 @@ class Fighter < ApplicationRecord
           # Gender 
           total_score / 2 if fighter_gender == 'Female'
   
-          self.update(fighter_score:(total_score))
+          self.update_column(:fighter_score, total_score)
     end
-  
+
+
 end

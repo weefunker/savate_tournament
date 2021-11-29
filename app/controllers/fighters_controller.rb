@@ -40,11 +40,13 @@ class FightersController < ApplicationController
       if @fighter.update(fighter_params)
         format.html { redirect_to @fighter, notice: "Fighter was successfully updated." }
         format.json { render :show, status: :ok, location: @fighter }
+
       else
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @fighter.errors, status: :unprocessable_entity }
       end
     end
+    
   end
 
   # DELETE /fighters/1 or /fighters/1.json
