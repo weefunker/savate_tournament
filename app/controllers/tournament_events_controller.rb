@@ -8,6 +8,8 @@ class TournamentEventsController < ApplicationController
 
   # GET /tournament_events/1 or /tournament_events/1.json
   def show
+    @fights = Fight.all
+
   end
 
   # GET /tournament_events/new
@@ -64,6 +66,6 @@ class TournamentEventsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def tournament_event_params
-      params.require(:tournament_event).permit(:total_contestants, :tournament_date)
+      params.require(:tournament_event).permit(:total_contestants, :tournament_date, :event_name)
     end
 end

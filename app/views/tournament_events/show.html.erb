@@ -10,5 +10,17 @@
   <%= @tournament_event.tournament_date %>
 </p>
 
+
+
+<%= @tournament_event.fights.each do |fight| %>
+<p><%= Fighter.find(fight.contestant_one).fighter_name %> | <%= Fighter.find(fight.contestant_one).fighter_score %> </p>
+vs 
+<p><%= @blue_corner %></p>
+<% end %>
+
+
+
+
+
 <%= link_to 'Edit', edit_tournament_event_path(@tournament_event) %> |
 <%= link_to 'Back', tournament_events_path %>
