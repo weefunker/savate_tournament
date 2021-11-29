@@ -60,3 +60,5 @@ gem 'sidekiq', '~> 6.1', '>= 6.1.2'
 gem 'name_of_person', '~> 1.1', '>= 1.1.1'
 gem 'faker'
 gem 'pry-nav'
+gem 'awesome_print'
+gem "font-awesome-rails"

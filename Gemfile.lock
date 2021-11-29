@@ -62,6 +62,7 @@ GEM
       zeitwerk (~> 2.3)
     addressable (2.8.0)
       public_suffix (>= 2.0.2, < 5.0)
+    awesome_print (1.8.0)
     bcrypt (3.1.16)
     bindex (0.8.1)
     bootsnap (1.9.1)
@@ -92,6 +93,8 @@ GEM
     faker (2.16.0)
       i18n (>= 1.6, < 2)
     ffi (1.15.4)
+    font-awesome-rails (4.7.0.6)
+      railties (>= 3.2, < 6.2)
     friendly_id (5.4.2)
       activerecord (>= 4.0.0)
     globalid (0.5.2)
@@ -237,11 +240,13 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  awesome_print
   bootsnap (>= 1.4.4)
   byebug
   capybara (>= 3.26)
   devise (~> 4.7, >= 4.7.3)
   faker
+  font-awesome-rails
   friendly_id (~> 5.4, >= 5.4.1)
   jbuilder (~> 2.7)
   listen (~> 3.3)

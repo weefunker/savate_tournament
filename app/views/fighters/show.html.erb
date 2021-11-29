@@ -12,12 +12,12 @@
 
 <p>
   <strong>height:</strong>
-  <%= @fighter.fighter_height %>
+  <%= (@fighter.fighter_height.to_f / 12).round(1)  %>'
 </p>
 
 <p>
   <strong>weight:</strong>
-  <%= @fighter.fighter_weight %>
+  <%= @fighter.fighter_weight %> KG
 </p>
 
 <p>
@@ -36,7 +36,7 @@
 </p>
 
 <p>
-  <strong>score:</strong>
+  <strong>Fighter score:</strong>
   <%= @fighter.fighter_score %>
 </p>
 

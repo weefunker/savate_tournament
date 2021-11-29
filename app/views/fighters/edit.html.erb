@@ -1,6 +1,81 @@
-<h1>Editing Fighter</h1>
+<p class="text-xl text-center">Editing Fighter Record</p>
 
-<%= render 'form', fighter: @fighter %>
+<%= form_with(model: @fighter) do |form| %>
+  <% if @fighter.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(fighter.errors.count, "error") %> prohibited this fighter from being saved:</h2>
 
+      <ul>
+        <% @fighter.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field mb-2 p-1">
+    <%= form.label :fighter_name %>
+    <%= form.text_field :fighter_name, class:"input w-64" %>
+  </div>
+
+  <div class="field mb-2 p-1">
+    <%= form.label :fighter_age %>
+    <%= form.number_field :fighter_age, class:"input w-24" %>
+  </div>
+
+  <div class="field mb-2 p-1">
+    Fighter Height in Feet
+    <%= 
+  form.select :fighter_height, 
+  options_for_select(
+    (36..96).to_a.map { |inch| 
+      { 
+        id: inch.to_s, 
+        name: (inch/12).floor.to_s+'\''+(inch%12).to_s+'"' 
+      } 
+    }.collect{ |p| 
+      [p[:name], 
+      p[:id].to_i]
+    },
+    selected: @fighter.fighter_height),
+    {},
+    id: 'height'
+%>
+  </div>
+
+  <div class="field mb-2 p-1">
+    Fighter Weight in KG
+    <%= form.number_field :fighter_weight, class:"input w-24" %>
+  </div>
+
+  <div class="field mb-2 p-1">
+    <%= form.label :fighter_gender %>
+    <%= form.select :fighter_gender, options_for_select(['Male', 'Female'], selected: @fighter.fighter_gender)   %>
+  </div>
+
+  <div class="field mb-2 p-1">
+    <%= form.label :fighter_experience %>
+    <%= form.select :fighter_experience, options_for_select(['None', 'A few fights', 'Lots of Fights'], selected: @fighter.fighter_experience)   %>
+  </div>
+
+  <div class="field mb-2 p-1">
+    <%= form.label :fighter_skill %>
+     <%= form.select :fighter_skill, options_for_select(['Novice', 'Intermediate', 'Advanced'], selected: @fighter.fighter_skill )  %>
+  </div>
+
+
+
+  <div class="field mb-2 p-1">
+    <%= form.label :fighter_score %>
+    <%= form.number_field :fighter_score, class:"input w-24" %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Update Fighter Record", class:"bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" %>
+  </div>
+<% end %>
+
+<div class="my-4">
 <%= link_to 'Show', @fighter %> |
 <%= link_to 'Back', fighters_path %>
+</div>

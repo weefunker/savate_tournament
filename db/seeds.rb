@@ -12,8 +12,12 @@ arr_exp = ['None', 'A few fights', 'Lots of Fights']
 arr_gender = ['Male', 'Female']
 
 
+
+
 16.times do 
-Fighter.create!(fighter_name: Faker::Name.name, fighter_age: rand(16..50), fighter_height:  rand(36..86), fighter_weight:  rand(53..117), fighter_gender: arr_gender.sample, fighter_experience: arr_exp.sample, fighter_skill: arr_skills.sample)
+    gender = arr_gender.sample
+Fighter.create!(fighter_age: rand(16..50), fighter_height:  rand(36..86), fighter_weight:  rand(53..117), fighter_gender: gender, fighter_experience: arr_exp.sample, fighter_skill: arr_skills.sample, fighter_name: gender == 'Male' ? Faker::Name.male_first_name + " " + Faker::Name.last_name : Faker::Name.female_first_name + " " + Faker::Name.last_name  )
+
 end
 
 

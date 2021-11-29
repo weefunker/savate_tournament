@@ -1,5 +1,35 @@
 <p id="notice"><%= notice %></p>
 
+
+<p class="text-3xl text-center m-12">Tournament Seed</p>
+
+
+
+<% @fight_list.each do |f|  %>
+<div class="text-center shadow-lg rounded-2xl p-4 bg-white dark:bg-gray-900 m-auto relative odd:float-left even:float-right">
+<p class="text-xl px-4">
+<%= f.fighter_name  %>
+<%= f.fighter_score %>
+</p>
+<p class="text-sm px-4 mb-8">
+<span class="mr-4">Age: <%= f.fighter_age %>       </span>
+<span class="mr-4">Height: <%= (f.fighter_height.to_f / 12).round(1) %>'</span>
+<span class="mr-4">Weight: <%= f.fighter_weight %>kg</span>
+<span class="mr-4">Sex: <%= f.fighter_gender %></span>
+<span class="mr-4">Exp: <%= f.fighter_experience %></span>
+<span class="mr-4">Skill: <%= f.fighter_skill %></span>
+
+
+
+ </p>
+ </div>
+<% end %>
+
+
+
+
+
+
 <p>
   <strong>Total contestants:</strong>
   <%= @tournament_event.total_contestants %>
@@ -9,17 +39,6 @@
   <strong>Tournament date:</strong>
   <%= @tournament_event.tournament_date %>
 </p>
-
-
-
-<% @tournament_event.fights.reverse_order.each do |fight| %>
-<p class="mb-8"><%= Fighter.find(fight.contestant_one).fighter_name %> | <%= Fighter.find(fight.contestant_one).fighter_score %> vs <%= Fighter.find(fight.contestant_two).fighter_name %> | <%= Fighter.find(fight.contestant_two).fighter_score %></p> 
-
-
-<% end %>
-
-
-
 
 
 

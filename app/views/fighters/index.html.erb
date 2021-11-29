@@ -22,7 +22,7 @@
       <tr>
         <td><%= fighter.fighter_name %></td>
         <td><%= fighter.fighter_age %></td>
-        <td><%= fighter.fighter_height %></td>
+        <td><%= (fighter.fighter_height.to_f / 12).round(1)  %></td>
         <td><%= fighter.fighter_weight %></td>
         <td><%= fighter.fighter_gender %></td>
         <td><%= fighter.fighter_experience %></td>

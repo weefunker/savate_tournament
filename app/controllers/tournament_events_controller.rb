@@ -8,12 +8,13 @@ class TournamentEventsController < ApplicationController
 
   # GET /tournament_events/1 or /tournament_events/1.json
   def show
-
+    @fight_list = Fighter.all.order(:fighter_score).reverse
   end
 
   # GET /tournament_events/new
   def new
     @tournament_event = TournamentEvent.new
+    @fighters = Fighter.all.order(:fighter_score).reverse
   end
 
   # GET /tournament_events/1/edit
