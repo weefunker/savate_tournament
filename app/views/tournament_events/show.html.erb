@@ -12,11 +12,14 @@
 
 
 
-<%= @tournament_event.fights.each do |fight| %>
-<p><%= Fighter.find(fight.contestant_one).fighter_name %> | <%= Fighter.find(fight.contestant_one).fighter_score %> </p>
-vs 
-<p><%= @blue_corner %></p>
+<% @tournament_event.fights.reverse_order.each do |fight| %>
+<p class="mb-8"><%= Fighter.find(fight.contestant_one).fighter_name %> | <%= Fighter.find(fight.contestant_one).fighter_score %> vs <%= Fighter.find(fight.contestant_two).fighter_name %> | <%= Fighter.find(fight.contestant_two).fighter_score %></p> 
+
+
 <% end %>
+
+
+
 
 
 

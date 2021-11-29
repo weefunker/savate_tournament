@@ -8,7 +8,6 @@ class TournamentEventsController < ApplicationController
 
   # GET /tournament_events/1 or /tournament_events/1.json
   def show
-    @fights = Fight.all
 
   end
 
