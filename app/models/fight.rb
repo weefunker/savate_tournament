@@ -1,5 +1,6 @@
 class Fight < ApplicationRecord
 
-  belongs_to :tournament_event
+  has_many :tournament_event
+  has_many :fights, :through => :tournament_events
 
 end

@@ -1,17 +1,19 @@
-<h1>New Tournament Event</h1>
-
-<%= render 'form', tournament_event: @tournament_event %>
-
-
-
-
-<p id="notice"><%= notice %></p>
-
-
-
-<br>
-
-<%= link_to 'New Fighter', new_fighter_path %>
-
-
-<%= link_to 'Back', tournament_events_path %>
+<div class="p-12">
+  <p class="text-xl text-center">New Tournament</p>
+  
+  <%= render 'form', tournament_event: @tournament_event %>
+  
+  
+  
+  
+  <p id="notice"><%= notice %></p>
+  
+  
+  
+  <br>
+  
+  <%= link_to 'New Fighter', new_fighter_path %>
+  
+  
+  <%= link_to 'Back', tournament_events_path %>
+</div>

@@ -8,7 +8,7 @@ class TournamentEventsController < ApplicationController
 
   # GET /tournament_events/1 or /tournament_events/1.json
   def show
-    @fight_list = Fighter.find(@selected_fighters).order(:fighter_score).reverse
+    @fight_list = Fighter.all.order(:fighter_score).reverse
   end
 
   # GET /tournament_events/new
@@ -25,7 +25,7 @@ class TournamentEventsController < ApplicationController
   # POST /tournament_events or /tournament_events.json
   def create
     @tournament_event = TournamentEvent.new(tournament_event_params, )
-    @selected_fighters = params[:fighter_ids]
+    
 
     respond_to do |format|
       if @tournament_event.save
