@@ -8,13 +8,14 @@ class TournamentEventsController < ApplicationController
 
   # GET /tournament_events/1 or /tournament_events/1.json
   def show
-    @fight_list = Fighter.all.order(:fighter_score).reverse
+    @fight_list = Fighter.find(@selected_fighters).order(:fighter_score).reverse
   end
 
   # GET /tournament_events/new
   def new
     @tournament_event = TournamentEvent.new
     @fighters = Fighter.all.order(:fighter_score).reverse
+   
   end
 
   # GET /tournament_events/1/edit
@@ -23,7 +24,8 @@ class TournamentEventsController < ApplicationController
 
   # POST /tournament_events or /tournament_events.json
   def create
-    @tournament_event = TournamentEvent.new(tournament_event_params)
+    @tournament_event = TournamentEvent.new(tournament_event_params, )
+    @selected_fighters = params[:fighter_ids]
 
     respond_to do |format|
       if @tournament_event.save
@@ -66,6 +68,6 @@ class TournamentEventsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def tournament_event_params
-      params.require(:tournament_event).permit(:total_contestants, :tournament_date, :event_name)
+      params.require(:tournament_event).permit(:total_contestants, :tournament_date, :event_name, :fighters, :fighter_ids)
     end
 end

@@ -1,5 +1,5 @@
 class TournamentEvent < ApplicationRecord
-    has_many :fighters
+    has_many :fighters, optional: true
     has_many :fights
 
     after_create :generate_fights 

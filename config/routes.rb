@@ -2,7 +2,10 @@ require 'sidekiq/web'
 
 Rails.application.routes.draw do
   resources :fighters
-  resources :tournament_events
+  resources :tournament_events do 
+    put :fighters, on: :collection
+  end
+
     authenticate :user, lambda { |u| u.admin? } do
       mount Sidekiq::Web => '/sidekiq'
     end

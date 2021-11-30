@@ -1,7 +1,6 @@
 class Fighter < ApplicationRecord
 
-    has_many :tournament_events
-    has_many :fights, through: :tournament_events
+    belongs_to :tournament_event, optional: true
 
     after_commit :generate_fighter_score
 
