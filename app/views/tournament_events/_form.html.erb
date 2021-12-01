@@ -1,3 +1,4 @@
+<div class="field p-16">
 <%= form_with(model: tournament_event) do |form| %>
   <% if tournament_event.errors.any? %>
     <div id="error_explanation">
@@ -11,9 +12,9 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="field py-8">
     <%= form.label :event_name %>
-    <%= form.text_field :event_name, class:"input w-24" %>
+    <%= form.text_field :event_name, class:"input w-64" %>
 
     <%= form.label :total_contestants %>
     <%= form.number_field :total_contestants, class:"input w-24" %>
@@ -24,7 +25,17 @@
     <%= form.datetime_select :tournament_date %>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
+
+  <% @fighters.each do |fighter| %>
+      <tr>
+        <td><%= check_box( "fighters_selected", "selected_fighters[]", { multiple: true }, fighter.id, nil) %>
+        <td><%= fighter.fighter_name %></td>
+      </tr>
+    <% end %>
+
+    <div class="actions">
+    <%= form.submit "Create Tournament", class:"bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" %>
   </div>
 <% end %>
+
+</div>

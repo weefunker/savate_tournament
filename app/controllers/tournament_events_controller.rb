@@ -24,7 +24,7 @@ class TournamentEventsController < ApplicationController
 
   # POST /tournament_events or /tournament_events.json
   def create
-    @tournament_event = TournamentEvent.new(tournament_event_params, )
+    @tournament_event = TournamentEvent.new(tournament_event_params)
     
 
     respond_to do |format|

@@ -12,13 +12,13 @@ class Fighter < ApplicationRecord
           total_score += 10 if fighter_age >= 16 && fighter_age <= 40 
           total_score += 15 if fighter_age >= 25 && fighter_age <= 40 
           total_score += 10 if fighter_age >= 30 && fighter_age <= 40 
-          total_score -= (5 +fighter_age/5) if fighter_age >= 42  
-          total_score -= (18 + fighter_age/5) if fighter_age <= 18  
+          total_score -= (5 + (fighter_age/5)) if fighter_age >= 42  
+          total_score -= (18 + (fighter_age/5)) if fighter_age <= 18  
   
           # Height 
           total_score += fighter_height.to_i 
           total_score += 10 if fighter_height.to_i >=68
-          total_score -= 10 if fighter_height.to_i >=67
+          total_score -= 15 if fighter_height.to_i <=67
       
           # BMI 
           fighter_height_to_cm = (fighter_height.to_i + 1) * 2.54

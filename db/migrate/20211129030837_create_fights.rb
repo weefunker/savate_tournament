@@ -7,3 +7,6 @@ class CreateFights < ActiveRecord::Migration[6.1]
     end
   end
 end
+
+
+id: 99, tournament_event_id: tournament_event.last, contestant_one: fighter_id.first, contestant_two: fighter_id.last, fighter_id: nil

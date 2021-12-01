@@ -41,6 +41,13 @@
 </p>
 
 
+<% if @tournament_event.fights %>
+  <% @tournament_event.fights.each do |fight| %>
+  Fight
+  <%= fight.contestant_one %> vs <%= fight.contestant_two %>
+
+  <% end %>
+<% end %>
 
 
 

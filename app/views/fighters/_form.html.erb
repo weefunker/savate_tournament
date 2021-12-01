@@ -1,5 +1,5 @@
 
-
+ <div class="p-16">
 <%= form_with(model: fighter) do |form| %>
   <% if fighter.errors.any? %>
     <div id="error_explanation">
@@ -21,8 +21,6 @@
       </label>
 
       <%= form.text_field :fighter_name, class:"appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white", placeholder:"John Doe" %>
-
-      <p class="text-red-500 text-xs italic">Please fill out this field.</p>
     </div>
 
    
@@ -130,3 +128,4 @@
 
 
 
+  </div>
