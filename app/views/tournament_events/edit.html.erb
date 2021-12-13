@@ -1,6 +1,26 @@
 <h1>Editing Tournament Event</h1>
 
-<%= render 'form', tournament_event: @tournament_event %>
+<div class="field p-16">
+<%= form_with(model: @tournament_event) do |form| %>
 
-<%= link_to 'Show', @tournament_event %> |
+
+  <div class="field py-8">
+    <%= form.label :event_name %>
+    <%= form.text_field :event_name, class:"input w-64" %>
+
+  </div>
+
+  <div class="field">
+    <%= form.label :tournament_date %>
+    <%= form.datetime_select :tournament_date %>
+  </div>
+
+    <div class="actions">
+    <%= form.submit "Create Tournament", class:"bg-red-600 hover:bg-red-400 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" %>
+  </div>
+<% end %>
+
+</div>
+
+<%= link_to 'Show', @tournament_event %> | <i class="fas fa-arrow-left"></i>
 <%= link_to 'Back', tournament_events_path %>

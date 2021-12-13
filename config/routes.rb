@@ -1,8 +1,16 @@
 require 'sidekiq/web'
 
 Rails.application.routes.draw do
-  resources :fighters
-  resources :tournament_events
+  
+  
+  resources :fighters do 
+    resources :fights 
+  end 
+  
+  resources :tournament_events do 
+    resources :fighters
+    resources :fights
+  end
 
     authenticate :user, lambda { |u| u.admin? } do
       mount Sidekiq::Web => '/sidekiq'

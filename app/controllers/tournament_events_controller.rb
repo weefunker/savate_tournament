@@ -1,6 +1,8 @@
 class TournamentEventsController < ApplicationController
   before_action :set_tournament_event, only: %i[ show edit update destroy ]
 
+
+
   # GET /tournament_events or /tournament_events.json
   def index
     @tournament_events = TournamentEvent.all
@@ -8,24 +10,34 @@ class TournamentEventsController < ApplicationController
 
   # GET /tournament_events/1 or /tournament_events/1.json
   def show
-    @fight_list = Fighter.all.order(:fighter_score).reverse
+    #@fight_list = Fighter.find(:ids_for_fights).order(:fighter_score).reverse
+    @fight_list = Fighter.where({id: [@tournament_event.fighter_list]}).order(:fighter_score).reverse
   end
 
   # GET /tournament_events/new
   def new
     @tournament_event = TournamentEvent.new
-    @fighters = Fighter.all.order(:fighter_score).reverse
+    @figher_ids = params[:selected_fighters]
+
+    @q = Fighter.ransack(params[:q])
+    @fighters = @q.result(distinct: false)
    
   end
 
   # GET /tournament_events/1/edit
   def edit
+    @fight_list = Fighter.where({id: [@tournament_event.fighter_list]}).order(:fighter_score).reverse
   end
+
+
 
   # POST /tournament_events or /tournament_events.json
   def create
-    @tournament_event = TournamentEvent.new(tournament_event_params)
     
+  
+    @tournament_event = TournamentEvent.new(tournament_event_params)
+
+    @tournament_event.fighter_list = params[:fighter_ids].map(&:to_i)
 
     respond_to do |format|
       if @tournament_event.save
@@ -36,6 +48,7 @@ class TournamentEventsController < ApplicationController
         format.json { render json: @tournament_event.errors, status: :unprocessable_entity }
       end
     end
+   
   end
 
   # PATCH/PUT /tournament_events/1 or /tournament_events/1.json
@@ -68,6 +81,6 @@ class TournamentEventsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def tournament_event_params
-      params.require(:tournament_event).permit(:total_contestants, :tournament_date, :event_name, :fighters, :fighter_ids)
+      params.require(:tournament_event).permit(:total_contestants, :tournament_date, :event_name, :fighters, :fighter_ids, :fighter_list)
     end
 end

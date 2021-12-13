@@ -7,7 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-arr_skills = ['Novice', 'Intermediate', 'Intermediate', 'Advanced']
+arr_skills = ['Novice', 'Novice', 'Novice', 'Intermediate', 'Intermediate', 'Intermediate', 'Intermediate', 'Advanced', 'Advanced', 'Exceptional']
 arr_exp = ['None', 'A few fights', 'A few fights', 'Lots of Fights']
 arr_gender = ['Male', 'Female', 'Male']
 

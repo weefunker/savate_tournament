@@ -1,12 +1,12 @@
-<p id="notice"><%= notice %></p>
 
-<%= params.inspect %>
+
+
 <p class="text-3xl text-center m-12">Tournament Seed</p>
 
 
 
 <% @fight_list.each do |f|  %>
-<div class="text-center shadow-lg rounded-2xl p-4 bg-white dark:bg-gray-900 m-auto relative odd:float-left even:float-right">
+<div class="fighter_box text-center shadow-lg rounded-2xl p-4 bg-white dark:bg-gray-900 m-auto relative odd:float-left even:float-right">
 <p class="text-xl px-4">
 <%= f.fighter_name  %>
 <%= f.fighter_score %>
@@ -41,15 +41,8 @@
 </p>
 
 
-<% if @tournament_event.fights %>
-  <% @tournament_event.fights.each do |fight| %>
-  Fight
-  <%= fight.contestant_one %> vs <%= fight.contestant_two %>
-
-  <% end %>
-<% end %>
 
 
 
-<%= link_to 'Edit', edit_tournament_event_path(@tournament_event) %> |
+<%= link_to 'Edit', edit_tournament_event_path(@tournament_event) %> | <i class="fas fa-arrow-left"></i>
 <%= link_to 'Back', tournament_events_path %>

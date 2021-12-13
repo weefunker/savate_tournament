@@ -1,7 +1,6 @@
 class Fighter < ApplicationRecord
 
-    belongs_to :tournament_event, optional: true
-
+    has_many :tournament_events
     after_commit :generate_fighter_score
 
 
@@ -42,7 +41,8 @@ class Fighter < ApplicationRecord
           # Fighter Skill - "Novice", "Intermediate", "Advanced"
           total_score -=10 if fighter_skill == "Novice"
           total_score +=20 if fighter_skill == "Intermediate"
-          total_score +=40 if fighter_skill == "Advanced"
+          total_score +=35 if fighter_skill == "Advanced"
+          total_score +=65 if fighter_skill == "Exceptional"
       
           # Gender 
           total_score = (total_score/4) if fighter_gender == "Female"

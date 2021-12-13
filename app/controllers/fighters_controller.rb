@@ -3,7 +3,8 @@ class FightersController < ApplicationController
 
   # GET /fighters or /fighters.json
   def index
-    @fighters = Fighter.all.order(:fighter_score).reverse
+    @q = Fighter.ransack(params[:q])
+    @fighters = @q.result(distinct: false)
 
   end
 

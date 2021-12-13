@@ -1,5 +1,5 @@
-<div class="p-12">
-  <p class="text-xl text-center">New Tournament</p>
+<div class="py-12 px-10">
+  
   
   <%= render 'form', tournament_event: @tournament_event %>
   
@@ -13,6 +13,8 @@
   <br>
   
   
-  
-  <%= link_to 'Back', tournament_events_path %>
+ <div class="ml-64">
+   <i class="fas fa-arrow-left"></i>
+    <%= link_to 'Back', tournament_events_path %>
+ </div>
 </div>

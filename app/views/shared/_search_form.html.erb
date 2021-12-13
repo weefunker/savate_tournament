@@ -1,0 +1,11 @@
+<%= search_form_for @q do |x| %>
+
+
+<p></p>
+<div class="flex">
+    <%= x.search_field :fighter_name_cont, class:"input", placeholder:"Search By Name" %>
+    <i class="pl-8 fa-solid fa-magnifying-glass"> <%= x.submit "Search" %></i>
+    
+</div>
+
+<% end %>

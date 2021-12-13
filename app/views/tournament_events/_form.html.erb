@@ -1,41 +1,80 @@
-<div class="field p-16">
-<%= form_with(model: tournament_event) do |form| %>
-  <% if tournament_event.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(tournament_event.errors.count, "error") %> prohibited this tournament_event from being saved:</h2>
+<p class="text-2xl text-center font-bold">New Tournament</p>
 
-      <ul>
-        <% tournament_event.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+
+  <div class="flex justify-center my-12">
+<div class="ml-64">
+  <div class="field p-10">
+  <%= form_with(model: tournament_event) do |form| %>
+    <% if tournament_event.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(tournament_event.errors.count, "error") %> prohibited this tournament_event from being saved:</h2>
+  
+        <ul>
+          <% tournament_event.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+  
+    <div class="field pb-10">
+      <%= form.label :event_name %>
+      <%= form.text_field :event_name, class:"input w-64" %>
+  
+    </div>
+  
+    <div class="field py-10">
+      <%= form.label :tournament_date %>
+      <%= form.datetime_select :tournament_date %>
+    </div>
+  
+
+  </div>
+  
+  <div class="px-2">
+  <p class="text-xl font-bold p-4">Fighters</p>
+  <table>
+    <thead>
+      <tr>
+        <th class="px-2">select</th>
+        <th class="px-2">name</th>
+        <th class="px-2">age</th>
+        <th class="px-2">height</th>
+        <th class="px-2">weight</th>
+        <th class="px-2">gender</th>
+        <th class="px-2">experience</th>
+        <th class="px-2">skill</th>
+        <th class="px-2">score</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+  
+    <tbody>
+      <% @fighters.each do |fighter| %>
+        <tr>
+          <td><%= check_box_tag 'fighter_ids[]', fighter.id %></td>
+          <td class="px-2"><%= fighter.fighter_name %></td>
+          <td class="px-2"><%= fighter.fighter_age %></td>
+          <td class="px-2"><%= (fighter.fighter_height.to_f / 12).round(1)  %></td>
+          <td class="px-2"><%= fighter.fighter_weight %></td>
+          <td class="px-2"><%= fighter.fighter_gender %></td>
+          <td class="px-2"><%= fighter.fighter_experience %></td>
+          <td class="px-2"><%= fighter.fighter_skill %></td>
+          <td class="px-2"><%= fighter.fighter_score %></td>
+          <td class="px-2 text-sm"><%= link_to 'View', fighter %></td>
+          <td class="px-2 text-sm"><%= link_to 'Edit', edit_fighter_path(fighter) %></td>
+          <td class="px-2 text-sm"><%= link_to 'Delete', fighter, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  </div>
+  <br>
+  
+      <div class="actions p-8 float-right mr-64">
+      <%= form.submit "Create Tournament", class:"bg-red-600 hover:bg-red-400 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" %>
     </div>
   <% end %>
-
-  <div class="field py-8">
-    <%= form.label :event_name %>
-    <%= form.text_field :event_name, class:"input w-64" %>
-
-    <%= form.label :total_contestants %>
-    <%= form.number_field :total_contestants, class:"input w-24" %>
+  
   </div>
-
-  <div class="field">
-    <%= form.label :tournament_date %>
-    <%= form.datetime_select :tournament_date %>
-  </div>
-
-
-  <% @fighters.each do |fighter| %>
-      <tr>
-        <td><%= check_box( "fighters_selected", "selected_fighters[]", { multiple: true }, fighter.id, nil) %>
-        <td><%= fighter.fighter_name %></td>
-      </tr>
-    <% end %>
-
-    <div class="actions">
-    <%= form.submit "Create Tournament", class:"bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" %>
-  </div>
-<% end %>
-
 </div>
