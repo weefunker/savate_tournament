@@ -3,7 +3,7 @@
 
 
 
-  <div class="flex justify-center my-12">
+  <div class="flex justify-center">
 <div class="boop">
   <div class="field p-10">
   <%= form_with(model: tournament_event) do |form| %>
@@ -19,16 +19,23 @@
       </div>
     <% end %>
   
-    <div class="field pb-4">
-      <%= form.label :event_name %>
+    <div class="field pb-4 flex justify-center ">
+
+
+     <div class="field py-4 mr-8">
+     <%= form.label :event_name, class:"font-bold" %>
       <%= form.text_field :event_name, class:"input w-64" %>
-  
+
+    </div>
+    
+       <div class="field py-4">
+   <p class="font-bold">Date</p>
+      <%= form.date_field :tournament_date %>
+    </div>
+     
     </div>
   
-    <div class="field py-4">
-      <p>Date</p>
-      <%= form.datetime_select :tournament_date %>
-    </div>
+   
   
 
   </div>
