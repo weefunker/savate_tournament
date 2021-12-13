@@ -2,7 +2,7 @@
 
 
   <div class="flex justify-center my-12">
-<div class="ml-64">
+<div class="boop">
   <div class="field p-10">
   <%= form_with(model: tournament_event) do |form| %>
     <% if tournament_event.errors.any? %>
@@ -17,14 +17,14 @@
       </div>
     <% end %>
   
-    <div class="field pb-10">
+    <div class="field pb-4">
       <%= form.label :event_name %>
       <%= form.text_field :event_name, class:"input w-64" %>
   
     </div>
   
-    <div class="field py-10">
-      <%= form.label :tournament_date %>
+    <div class="field py-4">
+      <p>Date</p>
       <%= form.datetime_select :tournament_date %>
     </div>
   
@@ -32,9 +32,9 @@
   </div>
   
   <div class="px-2">
-  <p class="text-xl font-bold p-4">Fighters</p>
-  <table>
-    <thead>
+  <p class="text-xl font-bold p-4">Select Fighters for Tournament</p>
+  <table class="min-w-full table-auto" >
+    <thead class="bg-gray-800 text-gray-300">
       <tr>
         <th class="px-2">select</th>
         <th class="px-2">name</th>
@@ -72,8 +72,11 @@
   <br>
   
       <div class="actions p-8 float-right mr-64">
+       <i class="fas fa-arrow-left mr-24"><%= link_to 'Back', tournament_events_path, class:"px-8" %></i>
+    
       <%= form.submit "Create Tournament", class:"bg-red-600 hover:bg-red-400 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" %>
     </div>
+
   <% end %>
   
   </div>
