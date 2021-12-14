@@ -1,48 +1,58 @@
 
 
 
-<p class="text-3xl text-center m-12">Tournament Seed</p>
+<p class="text-3xl text-center font-bold"><%= @tournament_event.event_name %></p>
+<p class="text-xl text-center mb-12">Tournament Seed</p>
 
 
-
+<div class="text-center grid grid-cols-2 gap-1 px-64">
 <% @fight_list.each do |f|  %>
-<div class="fighter_box text-center shadow-lg rounded-2xl p-4 bg-white dark:bg-gray-900 m-auto relative odd:float-left even:float-right">
-<p class="text-xl px-4">
-<%= f.fighter_name  %>
-<%= f.fighter_score %>
-</p>
-<p class="text-sm px-4 mb-8">
-<span class="mr-4">Age: <%= f.fighter_age %>       </span>
-<span class="mr-4">Height: <%= (f.fighter_height.to_f / 12).round(1) %>'</span>
-<span class="mr-4">Weight: <%= f.fighter_weight %>kg</span>
-<span class="mr-4">Sex: <%= f.fighter_gender %></span>
-<span class="mr-4">Exp: <%= f.fighter_experience %></span>
-<span class="mr-4">Skill: <%= f.fighter_skill %></span>
 
+<%= content_tag :div, class: cycle('py-2', 'py-2') do %>
+  <p class="text-xl px-4">
+  <%= f.fighter_name  %>
+  <span class="text-red-500"><%= f.fighter_score %></span>
+  </p>
+  <p class="text-sm px-4 mb-8">
+  <span class="mr-4">Age: <%= f.fighter_age %>       </span>
+  <span class="mr-4">Height: <%= (f.fighter_height.to_f / 12).round(1) %>'</span>
+  <span class="mr-4">Weight: <%= f.fighter_weight %>kg</span>
+  <span class="mr-4">Sex: <%= f.fighter_gender %></span>
+  <span class="mr-4">Exp: <%= f.fighter_experience %></span>
+  <span class="">Skill: <%= f.fighter_skill %></span>
+   </p>
 
-
- </p>
- </div>
 <% end %>
 
+<% end %>
+</div>
 
 
 
 
 
-<p>
+
+
+
+
+<div class="flex justify-center space-x-4">
+  <p class="p-8">
   <strong>Total contestants:</strong>
   <%= @tournament_event.total_contestants %>
 </p>
 
-<p>
+<p class="p-8">
   <strong>Tournament date:</strong>
-  <%= @tournament_event.tournament_date %>
+  <%= @tournament_event.tournament_date if @tournament_event.tournament_date.present? %>
 </p>
 
+</div>
 
 
+<div class="flex justify-center space-x-4">
 
 
-<%= link_to 'Edit', edit_tournament_event_path(@tournament_event) %> | <i class="fas fa-arrow-left"></i>
-<%= link_to 'Back', tournament_events_path %>
+  <%= link_to 'Edit Tournament Name/Date', edit_tournament_event_path(@tournament_event) %> <span class="mx-4">|</span> <i class="fas fa-arrow-left"></i>
+  <%= link_to 'Back', tournament_events_path %>
+</div>
+

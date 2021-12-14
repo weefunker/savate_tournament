@@ -19,7 +19,7 @@
           <tr>
             <td><%= tournament_event.event_name %></td>
             <td><%= tournament_event.total_contestants %></td>
-            <td><%= tournament_event.tournament_date.to_date %></td>
+            <td><%= tournament_event.tournament_date.to_date if tournament_event.tournament_date.present? %></td>
             <td class="text-sm"><%= link_to 'View', tournament_event %></td>
             <td class="text-sm"><%= link_to 'Edit', edit_tournament_event_path(tournament_event) %></td>
             <td class="text-sm"><%= link_to 'Delete Event', tournament_event, method: :delete, data: { confirm: 'Are you sure?' } %></td>

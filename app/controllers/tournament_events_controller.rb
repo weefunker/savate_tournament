@@ -18,9 +18,7 @@ class TournamentEventsController < ApplicationController
   def new
     @tournament_event = TournamentEvent.new
     @figher_ids = params[:selected_fighters]
-
-    @q = Fighter.ransack(params[:q])
-    @fighters = @q.result(distinct: false)
+    @fighters = Fighter.all.order(:fighter_name)
    
   end
 
