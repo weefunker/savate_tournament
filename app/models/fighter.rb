@@ -1,7 +1,8 @@
 class Fighter < ApplicationRecord
 
     has_many :tournament_events
-    after_commit :generate_fighter_score
+    after_commit :generate_fighter_score, on: :create
+    after_commit :generate_fighter_score, on: :update
 
 
 
