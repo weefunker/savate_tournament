@@ -68,6 +68,6 @@ class FightersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def fighter_params
-      params.require(:fighter).permit(:fighter_name, :fighter_age, :fighter_height, :fighter_weight, :fighter_gender, :fighter_experience, :fighter_skill, :fighter_score)
+      params.require(:fighter).permit(:fighter_name, :fighter_age, :fighter_height, :fighter_weight, :fighter_gender, :fighter_experience, :fighter_skill, :fighter_score, :club)
     end
 end
