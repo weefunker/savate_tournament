@@ -11,7 +11,23 @@ class TournamentEventsController < ApplicationController
   # GET /tournament_events/1 or /tournament_events/1.json
   def show
     #@fight_list = Fighter.find(:ids_for_fights).order(:fighter_score).reverse
-    @fight_list = Fighter.where({id: [@tournament_event.fighter_list]}).order(:fighter_score).reverse
+    #@fight_list = Fighter.where({id: [@tournament_event.fighter_list]}).order(:fighter_score).reverse
+
+    @dundonald_list = []
+    @bryansford_list = [] 
+
+    @tournament_entrants = []
+
+    @tournament_event.fighter_list.each do |fighter| 
+      x = Fighter.find(fighter) 
+      @dundonald_list << x if x.club == "Dundonald" 
+      @bryansford_list << x if x.club == "Bryansford"
+    end
+
+   @dundonald_list.sort_by!(&:fighter_score)
+   @bryansford_list.sort_by!(&:fighter_score)
+
+
   end
 
   # GET /tournament_events/new
