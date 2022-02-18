@@ -64,7 +64,7 @@
           <td><%= check_box_tag 'fighter_ids[]', fighter.id %></td>
           <td class="px-2"><%= fighter.fighter_name %></td>
           <td class="px-2"><%= fighter.fighter_age %></td>
-          <td class="px-2"><%= (fighter.fighter_height.to_f / 12).round(1)  %></td>
+          <td class="px-2"><%= fighter.fighter_height  %></td>
           <td class="px-2"><%= fighter.fighter_weight %></td>
           <td class="px-2"><%= fighter.fighter_gender %></td>
           <td class="px-2"><%= fighter.fighter_experience %></td>

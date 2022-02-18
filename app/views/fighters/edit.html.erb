@@ -24,23 +24,8 @@
   </div>
 
   <div class="field mb-2 p-1">
-    Fighter Height in Feet
-    <%= 
-  form.select :fighter_height, 
-  options_for_select(
-    (36..96).to_a.map { |inch| 
-      { 
-        id: inch.to_s, 
-        name: (inch/12).floor.to_s+'\''+(inch%12).to_s+'"' 
-      } 
-    }.collect{ |p| 
-      [p[:name], 
-      p[:id].to_i]
-    },
-    selected: @fighter.fighter_height),
-    {},
-    id: 'height'
-%>
+    Fighter Height in cm
+      <%= form.number_field :fighter_height, class:"input w-24" %>
   </div>
 
   <div class="field mb-2 p-1">

@@ -3,10 +3,43 @@ class Fighter < ApplicationRecord
     has_many :tournament_events
     after_save :generate_fighter_score
     
+    def generate_fighter_score
+        total_score = 0 
+
+        # Age
+        total_score += fighter_age * 3
+        total_score += 10 if fighter_age >=9
+        total_score += 20 if fighter_age >=12
+
+        # Height 
+        total_score += (fighter_height.to_i / 2) - 20
+
+
+        # BMI 
+        fighter_height_inches = (fighter_height.to_f * 0.3937)
+        fighter_bmi = fighter_weight / (fighter_height_inches * fighter_height_inches) * 10000
+        
+        total_score += 15 if fighter_bmi >= 20 && fighter_bmi <= 26
+        total_score += 10 if fighter_bmi >= 27 && fighter_bmi <= 32
+        
+        total_score -= 15 if fighter_bmi >= 18 
+        total_score -= 15 if fighter_bmi >= 33
+
+
+        # Weight 
+        total_score += (fighter_weight - 20)
+
+        # Gender 
+        total_score = (total_score - 30 ) if fighter_gender == "Female" && fighter_age <= 17
+        
+        self.update_column(:fighter_score, total_score)
+
+
+    end
 
 
 
-    def generate_fighter_score 
+    def old_generate_fighter_score 
           total_score = 0 
           # Age 
           total_score += (fighter_age * 2) if fighter_age < 16 
@@ -26,7 +59,7 @@ class Fighter < ApplicationRecord
           total_score -= 15 if fighter_height.to_i <=67 && fighter_age >= 16
       
           # BMI 
-          fighter_height_to_cm = (fighter_height.to_i + 1) * 2.54
+
           fighter_bmi = fighter_weight / (fighter_height_to_cm * fighter_height_to_cm) * 10000
           
           total_score += 15 if fighter_bmi >= 20 && fighter_bmi <= 26
