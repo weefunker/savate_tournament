@@ -63,6 +63,11 @@
      <%= form.select :fighter_skill, options_for_select(['Novice', 'Intermediate', 'Advanced'], selected: @fighter.fighter_skill )  %>
   </div>
 
+  <div class="field mb-2 p-1">
+    <%= form.label :club %>
+     <%= form.select :club, options_for_select(['Bryansford', 'Dundonald'], selected: @fighter.club )  %>
+  </div>
+
 
 
   <div class="field mb-2 p-1">
