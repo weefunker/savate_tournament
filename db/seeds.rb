@@ -11,12 +11,14 @@ arr_skills = ['Novice', 'Novice', 'Novice', 'Intermediate', 'Intermediate', 'Int
 arr_exp = ['None', 'A few fights', 'A few fights', 'Lots of Fights']
 arr_gender = ['Male', 'Female', 'Male']
 
+arr_club = ['Bryansford', 'Dundonald']
+
 
 
 
 16.times do 
     gender = arr_gender.sample
-Fighter.create!(fighter_age: rand(6..13), fighter_height:  rand(30..50), fighter_weight:  rand(30..55), fighter_gender: gender, fighter_experience: arr_exp.sample, fighter_skill: arr_skills.sample, fighter_name: gender == 'Male' ? Faker::Name.male_first_name + " " + Faker::Name.last_name : Faker::Name.female_first_name + " " + Faker::Name.last_name  )
+Fighter.create!(club: arr_club.sample, fighter_age: rand(6..13), fighter_height:  rand(30..50), fighter_weight:  rand(30..55), fighter_gender: gender, fighter_experience: arr_exp.sample, fighter_skill: arr_skills.sample, fighter_name: gender == 'Male' ? Faker::Name.male_first_name + " " + Faker::Name.last_name : Faker::Name.female_first_name + " " + Faker::Name.last_name  )
 
 end
 
