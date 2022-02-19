@@ -4,10 +4,14 @@
   <p class="text-2xl text-center font-bold mb-2">New Tournament</p>
 <p class="text-4xl text-center font-bold"><i class="fas fa-trophy text-center"></i></p>
 
+<div class="justify-center flex content-evenly">
 
+<button id="juniorBtn" class="mx-4 mt-4 bg-red-500 hover:bg-red-400 text-white font-bold py-2 px-4 border-b-4 border-red-700 hover:border-red-500 rounded">Junior Tournament</button>
+<button id="seniorBtn" class="mx-4 mt-4 bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded">Senior Tournament</button>
 
+</div>
   <div class="flex justify-center">
-<div class="boop">
+<div id="junior">
   <div class="field p-10">
   <%= form_for(@tournament_event) do |form| %>
   
@@ -34,9 +38,92 @@
   </div>
   
   <div class="px-2">
-  <p class="text-xl font-bold p-4">Select Fighters for Tournament</p>
+  <p class="text-xl font-bold p-4">Select junior fighters for tournament</p>
   <table class="min-w-full table-auto" >
-    <thead class="bg-gray-800 text-gray-300">
+    <thead class="bg-red-800 text-white">
+      <tr>
+        <th class="px-2">select</th>
+        <th class="px-2">name</th>
+        <th class="px-2">age</th>
+        <th class="px-2">height</th>
+        <th class="px-2">weight</th>
+        <th class="px-2">gender</th>
+        <th class="px-2">experience</th>
+        <th class="px-2">skill</th>
+        <th class="px-2">club</th>
+        <th class="px-2">score</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+  
+    <tbody>
+      <% @junior_fighters.each do |fighter| %>
+        <tr>
+          <td><%= check_box_tag 'fighter_ids[]', fighter.id %></td>
+          <td class="px-2"><%= fighter.fighter_name %></td>
+          <td class="px-2"><%= fighter.fighter_age %></td>
+          <td class="px-2"><%= fighter.fighter_height  %></td>
+          <td class="px-2"><%= fighter.fighter_weight %></td>
+          <td class="px-2"><%= fighter.fighter_gender %></td>
+          <td class="px-2"><%= fighter.fighter_experience %></td>
+          <td class="px-2"><%= fighter.fighter_skill %></td>
+          <td class="px-2"><%= fighter.club %></td>
+          <td class="px-2"><%= fighter.fighter_score %></td>
+       
+          <td class="px-2 text-sm"><%= link_to 'View', fighter %></td>
+          <td class="px-2 text-sm"><%= link_to 'Edit', edit_fighter_path(fighter) %></td>
+          <td class="px-2 text-sm"><%= link_to 'Delete', fighter, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  </div>
+  <br>
+  
+         <div class="actions p-8 float-right mr-64">
+       <i class="fas fa-arrow-left mr-24"><%= link_to 'Back', tournament_events_path, class:"px-8" %></i>
+    
+      <%= form.submit "Create Tournament", class:"bg-red-600 hover:bg-red-400 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" %>
+    </div>
+
+  <% end %>
+  
+  </div>
+</div>
+
+
+
+<div class="flex justify-center">
+<div id="senior" class="hidden">
+  <div class="field p-10">
+  <%= form_for(@tournament_event) do |form| %>
+  
+  
+    <div class="field pb-4 flex justify-center ">
+
+
+     <div class="field py-4 mr-8">
+     <%= form.label :event_name, class:"font-bold" %>
+      <%= form.text_field :event_name, class:"input w-64" %>
+
+    </div>
+    
+       <div class="field py-4">
+        <p class="font-bold">Date</p>
+        <%= form.date_field :tournament_date %>
+      </div>
+     
+   
+  
+   
+  
+
+  </div>
+  
+  <div class="px-2">
+  <p class="text-xl font-bold p-4">Select senior fighters for tournament</p>
+  <table class="min-w-full table-auto" >
+    <thead class="bg-blue-800 text-white">
       <tr>
         <th class="px-2">select</th>
         <th class="px-2">name</th>
@@ -75,8 +162,6 @@
   </table>
   </div>
   <br>
-  
-         <div class="actions p-8 float-right mr-64">
        <i class="fas fa-arrow-left mr-24"><%= link_to 'Back', tournament_events_path, class:"px-8" %></i>
     
       <%= form.submit "Create Tournament", class:"bg-red-600 hover:bg-red-400 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" %>
@@ -89,3 +174,23 @@
 
 
   
+
+  <script>
+   
+
+    var juniorDiv = document.getElementById('junior');
+    var seniorDiv = document.getElementById('senior');
+
+    juniorBtn.onclick = function() {
+        juniorDiv.setAttribute('class', 'visible');
+        seniorDiv.setAttribute('class', 'hidden');
+        console.log("junior button");
+    };
+
+    seniorBtn.onclick = function() {
+        juniorDiv.setAttribute('class', 'hidden');
+        seniorDiv.setAttribute('class', 'visible');
+        console.log("senior button");
+    };
+
+  </script>

@@ -34,7 +34,10 @@ class TournamentEventsController < ApplicationController
   def new
     @tournament_event = TournamentEvent.new
     @figher_ids = params[:selected_fighters]
-    @fighters = Fighter.all.order(:fighter_name)
+    @fighters = Fighter.where("fighter_age > ?", 14).order(:fighter_name)
+    @junior_fighters = Fighter.where("fighter_age < ?", 14).order(:fighter_name)
+
+    
    
   end
 
