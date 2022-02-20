@@ -10,3 +10,13 @@
     <i class="fas fa-arrow-left"></i>
     <%= link_to 'Back', fighters_path %>
 </div>
+
+
+
+<%= form_for @fighter, url: fighters_path do |f| %>
+   <div class="form-group">
+      <%= f.label :file, "Upload CSV File" %>
+      <%= f.file_field :file, class: 'form-control-file' %>
+   </div>
+   <%= f.submit "Upload CSV" %>
+<% end %>

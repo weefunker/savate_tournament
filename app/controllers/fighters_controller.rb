@@ -1,3 +1,5 @@
+require 'csv'
+
 class FightersController < ApplicationController
   before_action :set_fighter, only: %i[ show edit update destroy ]
 
@@ -24,7 +26,7 @@ class FightersController < ApplicationController
   # POST /fighters or /fighters.json
   def create
     @fighter = Fighter.new(fighter_params)
-
+    Fighter.import(params[:fighter][:file])
     respond_to do |format|
       if @fighter.save
         format.html { redirect_to @fighter, notice: "Fighter was successfully created." }

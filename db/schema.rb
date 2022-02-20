@@ -17,12 +17,12 @@ ActiveRecord::Schema.define(version: 2022_02_18_132836) do
 
   create_table "fighters", force: :cascade do |t|
     t.string "fighter_name"
-    t.integer "fighter_age"
-    t.string "fighter_height"
-    t.integer "fighter_weight"
+    t.integer "fighter_age", default: 1
+    t.integer "fighter_height", default: 1
+    t.integer "fighter_weight", default: 1
     t.string "fighter_gender"
     t.string "fighter_experience"
-    t.string "fighter_skill"
+    t.integer "fighter_skill", default: 0
     t.integer "fighter_score"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
