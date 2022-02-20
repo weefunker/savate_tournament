@@ -1,7 +1,7 @@
 require 'csv'
 
 class FightersController < ApplicationController
-  before_action :set_fighter, only: %i[ show edit update destroy ]
+  before_action :set_fighter, only: %i[ show edit update destroy spreadsheet ]
 
   # GET /fighters or /fighters.json
   def index
@@ -26,7 +26,7 @@ class FightersController < ApplicationController
   # POST /fighters or /fighters.json
   def create
     @fighter = Fighter.new(fighter_params)
-    Fighter.import(params[:fighter][:file])
+    #Fighter.import(params[:fighter][:file])
     respond_to do |format|
       if @fighter.save
         format.html { redirect_to @fighter, notice: "Fighter was successfully created." }
@@ -61,6 +61,8 @@ class FightersController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

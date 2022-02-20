@@ -62,7 +62,7 @@
     </div>
   </div>
 
-     <div class="w-full md:w-2/4 px-1 mb-6 md:mb-0">
+     <div class="w-full md:w-1/3 px-1 mb-6 md:mb-0">
       <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" >
         Height (CM)
       </label>
@@ -71,10 +71,22 @@
     
     </div>
 
+    <div class="w-full md:w-1/3 px-1 mb-6 md:mb-0">
+      <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" >
+        Fighter Skill (1-3)
+      </label>
+
+       <%= form.number_field :fighter_skill, class:"appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500", placeholder:"1" %>
+    
+    </div>
+
+
+    
+
     
          
   
-     <div class="w-full md:w-2/4 px-2 mb-6 md:mb-0">
+     <div class="w-full md:w-1/3 px-2 mb-6 md:mb-0">
       <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" >
         Club
       </label>
@@ -95,6 +107,10 @@
   <div class="actions py-8">
     <%= form.submit "Add Fighter", class: "bg-red-600 hover:bg-red-400 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" %>
   </div>
+
+      
+    <i class="fas fa-arrow-left"></i>
+    <%= link_to 'Back', fighters_path %>
 <% end %>
 
 

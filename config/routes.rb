@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   resources :fighters do 
     resources :fights 
   end 
+
+  
   
   resources :tournament_events do 
     resources :fighters
@@ -19,5 +21,7 @@ Rails.application.routes.draw do
 
   devise_for :users
   root to: 'home#index'
+
+  get '/spreadsheet', to: 'home#spreadsheet'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
