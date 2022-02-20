@@ -135,8 +135,8 @@
   
     <tbody>
       <% @fighters.each do |fighter| %>
-        <tr>
-          <td><%= check_box_tag 'fighter_ids[]', fighter.id %></td>
+        <tr class="<%= fighter.club%>">
+          <td><%= check_box_tag 'fighter_ids[]', fighter.id, false, class:"fighter_checkbox" %></td>
           <td class="px-2"><%= fighter.fighter_name %></td>
           <td class="px-2"><%= fighter.fighter_age %></td>
           <td class="px-2"><%= fighter.fighter_height  %></td>
@@ -169,7 +169,7 @@
 
   <script>
    
-
+    // Junior/Senior buttons
     var juniorDiv = document.getElementById('junior');
     var seniorDiv = document.getElementById('senior');
 
@@ -185,4 +185,20 @@
         console.log("senior button");
     };
 
+    // Select All Checkboxes
+    function toggle(source) {
+    checkboxes = document.getElementsByClass('fighter_checkbox');
+    for(var i=0, n=checkboxes.length;i<n;i++) {
+      checkboxes[i].checked = source.checked;
+    }
+  }
+
+
   </script>
+
+  <style>
+  .Dundonald {
+    background: #E0E0E0;
+    color: #282828;
+  }
+  </style>

@@ -1,9 +1,16 @@
-<p class="text-xl text-center">Editing Fighter Record</p>
 
+<p class="text-2xl text-center font-bold mb-4">Edit Fighter Record</p>
+<p class="text-sm text-center mb-4">This page is for changing a fighters attributes</p>
+<div class="flex justify-center">
+    <p class="w-12"><%= image_tag "edit_fighter.png" %></p>
+</div>
+<div class="flex justify-center">
+
+    <div class="p-16">
 <%= form_with(model: @fighter) do |form| %>
   <% if @fighter.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(fighter.errors.count, "error") %> prohibited this fighter from being saved:</h2>
+      <h2><%= pluralize(@fighter.errors.count, "error") %> prohibited this fighter from being saved:</h2>
 
       <ul>
         <% @fighter.errors.each do |error| %>
@@ -13,59 +20,111 @@
     </div>
   <% end %>
 
-  <div class="field mb-2 p-1">
-    <%= form.label :fighter_name %>
-    <%= form.text_field :fighter_name, class:"input w-64" %>
+
+ <div class="w-full max-w-lg">
+  <div class="flex flex-wrap -mx-3 mb-6">
+
+    <div class="w-full md:w-full mb-6 md:mb-0">
+      <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" >
+        Fighter Name
+      </label>
+
+      <%= form.text_field :fighter_name, class:"appearance-none block w-full bg-gray-200 text-gray-700 border border-blue-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white", placeholder:"John Doe" %>
+    </div>
+
+   
+  <div class="flex flex-wrap -mx-3 mb-2">
+    <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+      <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" >
+        Age
+      </label>
+       <%= form.number_field :fighter_age, class:"appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500", placeholder:"e.g 21" %>
+    </div>
+
+    <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+      <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" >
+        Weight (KG)
+      </label>
+
+       <%= form.number_field :fighter_weight, class:"appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500", placeholder:"e.g 55" %>
+    
+    </div>
+
+    <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+      <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" >
+        Gender
+      </label>
+   
+
+       <div class="relative">
+        <select name="fighter[fighter_gender]" class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="fighter_fighter_gender">
+          <option>Male</option>
+          <option>Female</option>
+        </select>
+        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+          <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+        </div>
+      </div>
+
+    </div>
   </div>
 
-  <div class="field mb-2 p-1">
-    <%= form.label :fighter_age %>
-    <%= form.number_field :fighter_age, class:"input w-24" %>
+     <div class="w-full md:w-1/3 px-1 mb-6 md:mb-0">
+      <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" >
+        Height (CM)
+      </label>
+
+       <%= form.number_field :fighter_height, class:"appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500", placeholder:"e.g 110" %>
+    
+    </div>
+
+    <div class="w-full md:w-1/3 px-1 mb-6 md:mb-0">
+      <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" >
+        Fighter Skill (1-3)
+      </label>
+
+       <%= form.number_field :fighter_skill, class:"appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500", placeholder:"1" %>
+    
+    </div>
+
+
+    
+
+    
+         
+  
+     <div class="w-full md:w-1/3 px-2 mb-6 md:mb-0">
+      <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" >
+        Club
+      </label>
+
+           <div class="relative">
+        <select name="fighter[club]" class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500 text-sm" id="fighter_fighter_skill">
+          <option>Bryansford</option>
+          <option>Dundonald</option>
+        </select>
+        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+          <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+        </div>
+      </div>
+         
+    </div>
+  </div>
+</div>
+  <div class="actions py-8">
+    <%= form.submit "Edit Fighter", class: "bg-blue-600 hover:bg-blue-400 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" %>
   </div>
 
-  <div class="field mb-2 p-1">
-    Fighter Height in cm
-      <%= form.number_field :fighter_height, class:"input w-24" %>
-  </div>
-
-  <div class="field mb-2 p-1">
-    Fighter Weight in KG
-    <%= form.number_field :fighter_weight, class:"input w-24" %>
-  </div>
-
-  <div class="field mb-2 p-1">
-    <%= form.label :fighter_gender %>
-    <%= form.select :fighter_gender, options_for_select(['Male', 'Female'], selected: @fighter.fighter_gender)   %>
-  </div>
-
-  <div class="field mb-2 p-1">
-    <%= form.label :fighter_experience %>
-    <%= form.select :fighter_experience, options_for_select(['None', 'A few fights', 'Lots of Fights'], selected: @fighter.fighter_experience)   %>
-  </div>
-
-  <div class="field mb-2 p-1">
-    <%= form.label :fighter_skill %>
-     <%= form.select :fighter_skill, options_for_select(['Novice', 'Intermediate', 'Advanced'], selected: @fighter.fighter_skill )  %>
-  </div>
-
-  <div class="field mb-2 p-1">
-    <%= form.label :club %>
-     <%= form.select :club, options_for_select(['Bryansford', 'Dundonald'], selected: @fighter.club )  %>
-  </div>
-
-
-
-  <div class="field mb-2 p-1">
-    <%= form.label :fighter_score %>
-    <%= form.number_field :fighter_score, class:"input w-24" %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit "Update Fighter Record", class:"bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" %>
-  </div>
+      
+    <i class="fas fa-arrow-left"></i>
+    <%= link_to 'Back', fighters_path %>
 <% end %>
 
-<div class="my-4">
-<%= link_to 'Show', @fighter %> | <i class="fas fa-arrow-left"></i>
-<%= link_to 'Back', fighters_path %>
+
+
+  </div>
+
 </div>
+
+
+ 
