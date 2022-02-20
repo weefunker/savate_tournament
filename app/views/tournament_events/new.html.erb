@@ -41,7 +41,7 @@
   <p class="text-xl font-bold p-4">Select junior fighters for tournament</p>
   <table class="min-w-full table-auto" >
     <thead class="bg-red-800 text-white">
-       <tr class="<%= fighter.club%>">
+       
         <th class="px-2">select</th>
         <th class="px-2">name</th>
         <th class="px-2">age</th>
@@ -56,7 +56,7 @@
   
     <tbody>
       <% @junior_fighters.each do |fighter| %>
-        <tr>
+        <tr class="<%= fighter.club%>">
           <td><%= check_box_tag 'fighter_ids[]', fighter.id %></td>
           <td class="px-2"><%= fighter.fighter_name %></td>
           <td class="px-2"><%= fighter.fighter_age %></td>
